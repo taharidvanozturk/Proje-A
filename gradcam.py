@@ -95,7 +95,7 @@ class GradCAM(object):
         b, k, u, v = gradients.size()
 
         alpha = gradients.view(b, k, -1).mean(2)
-        #alpha = F.relu(gradients.view(b, k, -1)).mean(2)
+        #alpha = f.relu(gradients.view(b, k, -1)).mean(2)
         weights = alpha.view(b, k, 1, 1)
 
         saliency_map = (weights*activations).sum(1, keepdim=True)
